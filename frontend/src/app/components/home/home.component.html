@@ -1,0 +1,90 @@
+<div class="card mb-3 chosenFilm justify-content-md-end" *ngIf="chosenMovie">
+    <div class="card-header h3">
+        Movie of the Month
+    </div>
+    <!-- <img src="{{chosenMovie.Poster}}" class="card-img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{chosenMovie.Title}}</h5>
+      <p class="card-text">{{chosenMovie.Plot}}</p>
+      <p class="card-text"><small>{{chosenMovie.Year}} - {{chosenMovie.imdbRating}}</small></p>
+    </div> -->
+    <!-- <div class="card mb-3" style="max-width: 540px;"> -->
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{chosenMovie.Poster}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{chosenMovie.Title}}</h5>
+            <p class="card-text">{{chosenMovie.Plot}}</p>
+            <p class="card-text"><small class="">{{chosenMovie.Year}} - {{chosenMovie.imdbRating}}</small></p>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+</div>
+
+<div class="card text-center" *ngIf="!chosenMovie && !showtime && topic">
+    <div class="card-header">
+      Topic of the Month
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{topic}}</p>
+    </div>
+</div>
+
+<div class="card text-center background" *ngIf="!chosenMovie && !showShowtime" >
+    <div class="card-body">
+      <h5 class="card-title h5">Propose a movie for this month!</h5>
+      <div>
+        <div class="input-group mb-3" >
+            <input type="text" class="form-control" placeholder="Recipient's username" [(ngModel)]="search" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn myButton" type="submit" id="button-addon2" (click)="searchMovies()">Button</button>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let item of movies">
+            <div class="card movies">
+                <!--  || ..\..\..\assets\images\default-movie.jpg -->
+                <img src="{{ item.Poster }}" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster != 'N/A'">
+                <img src="..\..\..\assets\images\default-movie.jpg" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster == 'N/A'">
+                <div class="card-body">
+                <h5 class="card-title">{{item.Title}}</h5>
+                <a class="btn myButton" (click)="addMovie(item.imdbID)">Propose</a>
+                <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2" *ngIf="proposedMovies.length>0">
+          <button class="btn myButton" style="margin: 15px 0 10px" type="button" (click)="CreateShowtime()">Enable Showtime</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="card text-center background" *ngIf="!chosenMovie && showShowtime">
+    <div class="card-body">
+      <h5 class="card-title h3">Vote for the movie of the month </h5>
+      <div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let item of showtime">
+            <div class="card movies">
+                <!--  || ..\..\..\assets\images\default-movie.jpg -->
+                <img src="{{ item.Poster }}" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster != 'N/A'">
+                <img src="..\..\..\assets\images\default-movie.jpg" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster == 'N/A'">
+                <div class="card-body">
+                <h5 class="card-title">{{item.Title}}</h5>
+                <p class="card-text">{{item.Plot}}</p>
+                <p class="card-text"><small class="">Year: {{item.Year}} - Audience Score:{{item.imdbRating}}</small></p>
+                <a class="btn myButton" (click)="voteMovie(item.imdbID)">Vote</a>
+                <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2" *ngIf="proposedMovies.length>0">
+          <button class="btn myButton" style="margin: 15px 0 10px" type="button" (click)="closeVotation()">Close Votation</button>
+        </div>
+      </div>
+    </div>
+</div>

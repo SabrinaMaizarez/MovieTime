@@ -1,0 +1,47 @@
+<div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" [(ngModel)]="search" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2" (click)="searchMovies()">Button</button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let item of movies">
+        <div class="card">
+            <!--  || ..\..\..\assets\images\default-movie.jpg -->
+            <img src="{{ item.Poster }}" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster != 'N/A'">
+            <img src="..\..\..\assets\images\default-movie.jpg" class="card-img-top" alt="..." style="height: 480px !important; width: auto;" *ngIf="item.Poster == 'N/A'">
+            <div class="card-body">
+            <h5 class="card-title">{{item.Title}}</h5>
+            <a class="btn btn-primary" (click)="addMovie(item.imdbID)">Propose</a>
+            <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</div>
+<!-- <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button" (click)="getShowtime()">Button</button>
+         <button class="btn btn-primary" type="button">Button</button>
+</div> -->
+
+<!-- <tbody>
+    <tr *ngFor="let item of movies">
+        <td>{{item.id}}</td>
+        <td>{{item.name | uppercase}}</td>
+        <td class="text-right">{{item.city}}</td>
+        <td>{{item.division}}</td>
+    </tr> 
+    <tr class="card-group">
+        <div class="card" *ngFor="let item of movies">
+            <td>
+                <img src="{{item.Poster}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.Title}}</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </td>
+        </div>
+    </tr>
+</tbody> -->
+

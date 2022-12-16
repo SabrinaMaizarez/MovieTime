@@ -1,0 +1,38 @@
+/* *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.chosenFilm{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    background-color: rgba(210, 105, 70, 0.766);
+    color: rgb(228, 209, 203);
+    justify-content: center;
+}
+
+.h3{
+    font-size: bold;
+    color: rgb(228, 209, 203);
+}
+.h5{
+    font-size: bold;
+    color: rgb(228, 209, 203);
+}
+.text-muted{
+    color: rgb(228, 209, 203);
+
+}
+.background{
+    background-color: rgba(210, 105, 70, 0.766);
+}
+
+.myButton{
+    background-color: rgb(126, 32, 0);
+    color: rgb(228, 209, 203);
+}
+
+.movies{
+    background-color: rgba(233,128,93,255);
+}
